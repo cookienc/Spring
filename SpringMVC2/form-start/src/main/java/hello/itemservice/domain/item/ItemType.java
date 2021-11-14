@@ -1,7 +1,9 @@
 package hello.itemservice.domain.item;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+@Getter
 @RequiredArgsConstructor
 public enum ItemType {
 
