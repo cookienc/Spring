@@ -61,7 +61,7 @@ public class FormItemController {
         return "form/item";
     }
 
-    @GetMapping("/add")
+    @GetMapping("add")
     public String addForm(Model model) {
         model.addAttribute("item", new Item());
 
