@@ -14,7 +14,7 @@ public class Item {
 
     private Long id;
 
-    @NotBlank(message = "공백X")
+    @NotNull
     private String itemName;
 
     @NotNull
@@ -22,7 +22,7 @@ public class Item {
     private Integer price;
 
     @NotNull
-    @Max(9999)
+//    @Max(9999)
     private Integer quantity;
 
     public Item() {
