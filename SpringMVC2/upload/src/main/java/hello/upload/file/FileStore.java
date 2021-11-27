@@ -1,6 +1,6 @@
 package hello.upload.file;
 
-import hello.upload.domain.UPloadFile;
+import hello.upload.domain.UploadFile;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,8 +21,8 @@ public class FileStore {
         return fileDir + filename;
     }
 
-    public List<UPloadFile> storeFiles(List<MultipartFile> multipartFiles) throws IOException {
-        List<UPloadFile> storeFileResult = new ArrayList<>();
+    public List<UploadFile> storeFiles(List<MultipartFile> multipartFiles) throws IOException {
+        List<UploadFile> storeFileResult = new ArrayList<>();
         for (MultipartFile multipartFile : multipartFiles) {
             if (!multipartFile.isEmpty()) {
                 storeFileResult.add(storeFile(multipartFile));
@@ -31,7 +31,7 @@ public class FileStore {
         return storeFileResult;
     }
 
-    public UPloadFile storeFile(MultipartFile multipartFile) throws IOException {
+    public UploadFile storeFile(MultipartFile multipartFile) throws IOException {
         if (multipartFile.isEmpty()) {
             return null;
         }
@@ -41,7 +41,7 @@ public class FileStore {
         //확장자 추출해서 추가
         String storeFileName = createStoreFileName(originalFilename);
         multipartFile.transferTo(new File(getFullPath(storeFileName)));
-        return new UPloadFile(originalFilename, storeFileName);
+        return new UploadFile(originalFilename, storeFileName);
     }
 
     private String createStoreFileName(String originalFilename) {
